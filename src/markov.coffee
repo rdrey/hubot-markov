@@ -44,9 +44,9 @@ module.exports = (robot) ->
   storage = new RedisStorage(client)
 
   # Read markov-specific configuration from the environment.
-  ply = process.env.HUBOT_MARKOV_PLY or 1
-  min = process.env.HUBOT_MARKOV_LEARN_MIN or 1
-  max = process.env.HUBOT_MARKOV_GENERATE_MAX or 50
+  ply = Number(process.env.HUBOT_MARKOV_PLY or 1)
+  min = Number(process.env.HUBOT_MARKOV_LEARN_MIN or 1)
+  max = Number(process.env.HUBOT_MARKOV_GENERATE_MAX or 50)
   pct = Number(process.env.HUBOT_MARKOV_RESPOND_CHANCE or 0)
 
   model = new MarkovModel(storage, ply, min)
